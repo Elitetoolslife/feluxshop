@@ -20,7 +20,7 @@
                         </ul>
                     </div>
                 @endif
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login') }}" id="login-form">
                     @csrf
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -35,5 +35,6 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/auth.js') }}"></script>
 </body>
 </html>
