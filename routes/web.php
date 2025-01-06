@@ -287,3 +287,150 @@ Explanation:
 
 Each route is clearly defined to ensure a well-structured application, making it easy to scale and maintain.
 ***/
+    /*
+    |--------------------------------------------------------------------------
+    | Tickets Management Routes
+    |--------------------------------------------------------------------------
+    |
+    | Routes for managing users: list, search, edit, update, delete.
+    | All views for user management are in resources/views/admin/users/.
+    |
+    */
+Route::prefix('tickets')->name('tickets.')->controller(TicketController::class)->group(function () {
+
+
+
+
+
+/**
+         * List All Users
+         * URL: https://EliteTools.life/m/admin/users
+         * View: resources/views/admin/users/index.blade.php
+         */
+    Route::get('/all', 'allUsers')->name('all');
+});
+        /**
+         * List All Usersp
+         * URL: https://EliteTools.life/m/admin/users
+         * View: resources/views/admin/users/index.blade.php
+         */
+        Route::get('/', 'index')->name('index');
+        
+        /**
+         * Search Users
+         * URL: https://EliteTools.life/m/admin/users/search
+         * View: resources/views/admin/users/search.blade.php
+         */
+        Route::get('/search', 'search')->name('search');
+        
+        /**
+         * Edit User
+         * URL: https://EliteTools.life/m/admin/users/{user_id}/edit
+         * View: resources/views/admin/users/edit.blade.php
+         */
+        Route::get('/{user_id}/edit', 'edit')->name('edit');
+        
+        /**
+         * Update User
+         * URL: https://EliteTools.life/m/admin/users/{user_id}/update
+         * Controller: UserController@update
+         * Path: app/Http/Controllers/Admin/UserController.php
+         */
+        Route::post('/{user_id}/update', 'update')->name('update');
+        
+        /**
+         * Delete User
+         * URL: https://EliteTools.life/m/admin/users/{user_id}/delete
+         * Controller: UserController@delete
+         * Path: app/Http/Controllers/Admin/UserController.php
+         */
+        Route::post('/{user_id}/delete', 'delete')->name('delete');
+        
+        /**
+         * Activate User as Seller
+         * URL: https://EliteTools.life/m/admin/users/{user_id}/activate-seller
+         * Controller: UserController@activate
+         * Path: app/Http/Controllers/Admin/UserController.php
+         */
+        Route::post('/{user_id}/activate', 'activate')->name('activate');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Manage Users with Balance
+        |--------------------------------------------------------------------------
+        |
+        | Manage users with a balance, only accessible from the user management section.
+        |
+        */
+        Route::prefix('with-balance')->name('with-balance.')->group(function () {
+            /**
+             * List Users with Balance
+             * URL: https://EliteTools.life/m/admin/users/with-balance
+             * View: resources/views/admin/users/with-balance.blade.php
+             */
+            Route::get('/', 'index')->name('index');
+        });
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Balance Management
+    |--------------------------------------------------------------------------
+    |
+    | Routes for managing user balances: view, search, and update.
+    |
+    */
+    Route::prefix('users/balance')->name('users.balance.')->controller(UserBalanceController::class)->group(function () {
+        /**
+         * View User Balances
+         * URL: https://EliteTools.life/m/admin/users/balance
+         * View: resources/views/admin/users/balance/index.blade.php
+         */
+        Route::get('/', 'index')->name('index');
+        
+        /**
+         * Search User Balances
+         * URL: https://EliteTools.life/m/admin/users/balance/search
+         * View: resources/views/admin/users/balance/search.blade.php
+         */
+        Route::get('/search', 'search')->name('search');
+        
+        /**
+         * Edit User Balance
+         * URL: https://EliteTools.life/m/admin/users/balance/{user_id}/edit
+         * View: resources/views/admin/users/balance/edit.blade.php
+         */
+        Route::get('/{user_id}/edit', 'edit')->name('edit');
+        
+        /**
+         * Update User Balance
+         * URL: https://EliteTools.life/m/admin/users/balance/{user_id}/update
+         * Controller: UserBalanceController@update
+         * Path: app/Http/Controllers/Admin/UserBalanceController.php
+         */
+        Route::post('/{user_id}/update', 'update')->name('update');
+
+})
+
+
+    })
+/***
+
+
+Explanation:
+
+	1.	URL Structure: This structure uses meaningful paths, with public routes (e.g., /register, /login) and protected routes (e.g., /admin, /admin/users).
+	2.	Resource Views:
+	•	Views for authentication are located in resources/views/user/.
+	•	Admin views are located in resources/views/admin/.
+	3.	URL Parameters: For dynamic paths like user IDs, parameters are used in routes, such as {user_id} in /admin/users/{user_id}/edit.
+	4.	Controller Structure: Controllers are placed in app/Http/Controllers/:
+	•	AuthController handles user registration and login.
+	•	DashboardController handles the admin dashboard.
+	•	UserController handles user management.
+	•	UserBalanceController handles user balance management.
+
+Each route is clearly defined to ensure a well-structured application, making it easy to scale and maintain.
+***/
+
+
