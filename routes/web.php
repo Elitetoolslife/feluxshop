@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\Admin\UserBalanceController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserSearchController;
