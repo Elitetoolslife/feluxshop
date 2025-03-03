@@ -10,9 +10,15 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
+
+
+
                 <h2>Welcome, {{ session('username') }}</h2>
                 <p>Your balance is: ${{ session('balance') }}</p>
                 <a href="{{ route('logout') }}" class="btn btn-primary">Logout</a>
+
+
+
             </div>
         </div>
     </div>
